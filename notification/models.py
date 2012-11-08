@@ -26,7 +26,7 @@ from django.contrib.auth.models import AnonymousUser
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
-from notification.carriers import MOBILE_CARRIERS
+#from notification.carriers import MOBILE_CARRIERS
 
 QUEUE_ALL = getattr(settings, "NOTIFICATION_QUEUE_ALL", False)
 
@@ -334,24 +334,24 @@ def send_now(users, label, extra_context=None, on_site=True, sender=None):
                                                 label, context).strip() or None)
 
         # SMS
-        if should_send(user, notice_type, "sms"):
-            try:
-                profile = user.get_profile()
-            except ObjectDoesNotExist:
-                profile = None
-            if profile is not None and \
-                    getattr(profile, "mobile_number", None) is not None and \
-                    getattr(profile, "mobile_carrier", None) is not None and \
-                    profile.mobile_carrier in MOBILE_CARRIERS and \
-                    'sms' in MOBILE_CARRIERS[profile.mobile_carrier]:
-                # Put full SMS in the subject.
-                gateway = MOBILE_CARRIERS[profile.mobile_carrier]['sms'].format(
-                        number=profile.mobile_number)
-                send_mail(
-                    subject=render_notice("sms.txt", label, context).strip(),
-                    message="",
-                    from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=[gateway])
+        #if should_send(user, notice_type, "sms"):
+            #try:
+                #profile = user.get_profile()
+            #except ObjectDoesNotExist:
+                #profile = None
+            #if profile is not None and \
+                    #getattr(profile, "mobile_number", None) is not None and \
+                    #getattr(profile, "mobile_carrier", None) is not None and \
+                    #profile.mobile_carrier in MOBILE_CARRIERS and \
+                    #'sms' in MOBILE_CARRIERS[profile.mobile_carrier]:
+                ## Put full SMS in the subject.
+                #gateway = MOBILE_CARRIERS[profile.mobile_carrier]['sms'].format(
+                        #number=profile.mobile_number)
+                #send_mail(
+                    #subject=render_notice("sms.txt", label, context).strip(),
+                    #message="",
+                    #from_email=settings.DEFAULT_FROM_EMAIL,
+                    #recipient_list=[gateway])
 
     # reset environment to original language
     activate(current_language)
