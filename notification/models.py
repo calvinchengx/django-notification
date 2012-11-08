@@ -81,7 +81,6 @@ class NoticeSetting(models.Model):
 
 
 def get_notification_setting(user, notice_type, medium):
-    print 111, NOTICE_MEDIA_DEFAULTS[medium]
     try:
         return NoticeSetting.objects.get(user=user, notice_type=notice_type, medium=medium)
     except NoticeSetting.DoesNotExist:
