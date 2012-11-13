@@ -11,11 +11,13 @@ class ShowNotifications(template.Node):
     """
 
     def render(self, context):
-        user = context['request'].user
 
         notices = None
-        if user.is_authenticated():
-            notices = Notice.objects.notices_for(user, on_site=True)
+
+        if 'request' in context:
+            user = context['request'].user
+            if user.is_authenticated():
+                notices = Notice.objects.notices_for(user, on_site=True)
 
         rendered_notices = render_to_string('notification/notifications_user.html', \
                                             {'notices': notices})
