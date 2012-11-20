@@ -1,0 +1,13 @@
+.notification-wrapper {
+	height: 20px;
+}
+
+.notification-wrapper img {
+	float: right;
+}
+
+#notifications {
+	margin-bottom: 0px;
+	float: left;
+}
+
