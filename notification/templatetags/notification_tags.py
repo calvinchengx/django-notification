@@ -18,9 +18,13 @@ class ShowNotifications(template.Node):
             notices = None
             user = context['request'].user
             if user.is_authenticated():
-                notices = Notice.objects.notices_for(user, on_site=True)
+                notices = Notice.objects.notices_for(user=user, unseen=True, on_site=True)
+
+            # Add in notices available in our context and pass the entire
+            # context to our template
+            context['notices'] = notices
             rendered_notices = render_to_string('notification/notifications_user.html', \
-                                                {'notices': notices})
+                                                context)
         except:
             pass
 
