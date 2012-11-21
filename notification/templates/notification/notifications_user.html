@@ -1,13 +1,14 @@
+{% load static from staticfiles %}
+
+{% if notices %}
 <div class="notification-wrapper">
-	{% load static from staticfiles %}
-	{% if notices %}
 		<ul id="notifications">
 		{% for n in notices %}
 			<li id="{{ n.pk }}">{{ n }}</li>    
 		{% endfor %}
 		</ul>
-	{% endif %}
 	<a id="notification-close" href="#">
 		<img src="{% static 'img/icon-close.png' %}" />
 	</a>
 </div>
+{% endif %}
