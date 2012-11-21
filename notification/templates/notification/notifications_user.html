@@ -2,12 +2,14 @@
 
 {% if notices %}
 <div class="notification-wrapper">
+	<div class="container">
 		<ul id="notifications">
 		{% for n in notices %}
 			<li id="{{ n.pk }}">{{ n }}</li>    
 		{% endfor %}
 		</ul>
-	<a id="notification-close" href="#">
+	</div>
+	<a id="notification-close" class="pull-right"  href="#">
 		<img src="{% static 'img/icon-close.png' %}" />
 	</a>
 </div>

@@ -1,13 +1,32 @@
 .notification-wrapper {
-	height: 20px;
+	display: block;
+	height: 24px;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #6C9E00;
 }
 
 .notification-wrapper img {
 	float: right;
 }
 
-#notifications {
-	margin-bottom: 0px;
-	float: left;
+.notification-wrapper .container {
+	text-align: center;
 }
 
+#notifications {
+	margin: 2px auto 0px;
+}
+
+ul#notifications li {
+	list-style-type: none;	
+	color: #fff;
+}
+
+#notification-close {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	margin-top: 2px;
+}

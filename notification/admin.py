@@ -13,6 +13,7 @@ class NoticeSettingAdmin(admin.ModelAdmin):
 
 class NoticeAdmin(admin.ModelAdmin):
     list_display = ["message", "recipient", "sender", "notice_type", "added", "unseen", "archived"]
+    list_editable = ["unseen"]
 
 
 admin.site.register(NoticeQueueBatch)
