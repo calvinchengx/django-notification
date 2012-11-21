@@ -15,6 +15,24 @@
 	text-align: center;
 }
 
+.notification-wrapper .container a {
+	display: block;
+	width: 20px;
+	height: 30px;
+	margin: 0px;
+	text-decoration: none;
+}
+
+.notification-wrapper .container .leftArrow {
+	background: url("/static/img/x-white.png") no-repeat -112px; 
+	margin-top: -3px;
+}
+
+.notification-wrapper .container .rightArrow {
+	background: url("/static/img/x-white.png") no-repeat -168px; 
+	margin-top: -3px;
+}
+
 #notifications {
 	margin: 2px auto 0px;
 }
