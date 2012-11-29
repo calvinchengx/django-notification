@@ -15,7 +15,8 @@
 	text-align: center;
 }
 
-.notification-wrapper .container a {
+.notification-wrapper .container a.span1
+{
 	display: block;
 	width: 20px;
 	height: 30px;
@@ -35,6 +36,7 @@
 
 #notifications {
 	margin: 2px auto 0px;
+	width: 90%;
 }
 
 ul#notifications li {

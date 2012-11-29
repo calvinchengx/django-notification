@@ -28,6 +28,8 @@ from django.contrib.contenttypes import generic
 
 #from notification.carriers import MOBILE_CARRIERS
 
+from ckeditor.fields import RichTextField
+
 QUEUE_ALL = getattr(settings, "NOTIFICATION_QUEUE_ALL", False)
 
 
@@ -153,7 +155,7 @@ class Notice(models.Model):
 
     recipient = models.ForeignKey(User, related_name="recieved_notices", verbose_name=_("recipient"))
     sender = models.ForeignKey(User, null=True, related_name="sent_notices", verbose_name=_("sender"))
-    message = models.TextField(_("message"))
+    message = RichTextField(_("message"), config_name='basic')
     notice_type = models.ForeignKey(NoticeType, verbose_name=_("notice type"))
     added = models.DateTimeField(_("added"), default=now)
     unseen = models.BooleanField(_("unseen"), default=True)

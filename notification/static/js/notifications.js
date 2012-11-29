@@ -6,19 +6,22 @@ $(document).ready(function() {
 	function show_next(notice_list) {
 		var visible_li = notice_list.children().filter(':visible')[0];
 		
-		next_length = $(visible_li).next('li').length
-		previous_length = $(visible_li).first().length
+		next_length = $(visible_li).next('li').length;
+		previous_length = $(visible_li).first().length;
+		total_length = notice_list.children().length;
 
 		// determine who to show
 		if ( next_length > 0 ) {
 			next_visible_li = $(visible_li).next('li')
-		} else if ( next_length == 0 && previous_length == 1 ) {
+		} else if ( next_length == 0 && previous_length == 1 && total_length == 1) {
+			next_visible_li = visible_li;
+		} else if ( next_length == 0 && previous_length == 1 && total_length > 1) {
 			next_visible_li = notice_list.children().first();
 		}
 
 		// show the next li element; and hide the current li element
-		$(next_visible_li).css("display", "block");
 		$(visible_li).css("display", "none");
+		$(next_visible_li).css("display", "block");
 
 		return $(next_visible_li);
 	}

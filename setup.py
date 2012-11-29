@@ -8,6 +8,7 @@ setup(
     long_description=open("docs/usage.txt").read(),
     author="James Tauber",
     author_email="jtauber@jtauber.com",
+    install_requires=['django-ckeditor', ],
     url="https://github.com/jtauber/django-notification",
     packages=find_packages(),
     classifiers=[
