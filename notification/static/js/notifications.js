@@ -1,30 +1,13 @@
 $(document).ready(function() {
 
-	left_arrow = $(".notification-wrapper .container").find("a").first()
-	right_arrow = $(".notification-wrapper .container").find("a").last()
+	// Initialize
+	var left_arrow = $(".notification-wrapper .container").find("a").first()
+	var right_arrow = $(".notification-wrapper .container").find("a").last()
+	var notice_list = $("ul#notifications");
 
-	function show_next(notice_list) {
-		var visible_li = notice_list.children().filter(':visible')[0];
-		
-		next_length = $(visible_li).next('li').length;
-		previous_length = $(visible_li).first().length;
-		total_length = notice_list.children().length;
-
-		// determine who to show
-		if ( next_length > 0 ) {
-			next_visible_li = $(visible_li).next('li')
-		} else if ( next_length == 0 && previous_length == 1 && total_length == 1) {
-			next_visible_li = visible_li;
-		} else if ( next_length == 0 && previous_length == 1 && total_length > 1) {
-			next_visible_li = notice_list.children().first();
-		}
-
-		// show the next li element; and hide the current li element
-		$(visible_li).css("display", "none");
-		$(next_visible_li).css("display", "block");
-
-		return $(next_visible_li);
-	}
+	// only the first li element in notice_list is visible, everybody else hidden
+	notice_list.children().css("display", "none");
+	notice_list.children().first().css("display", "block");
 
 	// render arrow icons as needed
 	$(".notification-wrapper .container").hover(
@@ -39,7 +22,6 @@ $(document).ready(function() {
 	);
 
 	// notice manual rotation logic
-	var notice_list = $("ul#notifications");
 	$(left_arrow).click(function() {
 		show_next(notice_list);
 	});
@@ -77,4 +59,29 @@ $(document).ready(function() {
 		});
 
 	});
+
+	// Given a ul element containing list, hide current li element and show next li element.
+	function show_next(notice_list) {
+		var visible_li = notice_list.children().filter(':visible')[0];
+		
+		next_length = $(visible_li).next('li').length;
+		previous_length = $(visible_li).first().length;
+		total_length = notice_list.children().length;
+
+		// determine who to show
+		if ( next_length > 0 ) {
+			next_visible_li = $(visible_li).next('li')
+		} else if ( next_length == 0 && previous_length == 1 && total_length == 1) {
+			next_visible_li = visible_li;
+		} else if ( next_length == 0 && previous_length == 1 && total_length > 1) {
+			next_visible_li = notice_list.children().first();
+		}
+
+		// show the next li element; and hide the current li element
+		$(visible_li).css("display", "none");
+		$(next_visible_li).css("display", "block");
+
+		return $(next_visible_li);
+	}
+
 });

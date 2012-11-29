@@ -37,6 +37,7 @@
 #notifications {
 	margin: 2px auto 0px;
 	width: 90%;
+	padding-left: 25px;
 }
 
 ul#notifications li {

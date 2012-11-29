@@ -6,7 +6,7 @@
 		<a class="span1 pull-left" href="#"></a>
 		<ul id="notifications" class="span10">
 		{% for n in notices %}
-			<li id="{{ n.pk }}">{{ n|safe }}</li>    
+			<li id="{{ n.pk }}">{{ n|truncatechars:125|safe }}</li>    
 		{% endfor %}
 		</ul>
 		<a class="span1 pull-right" href="#"></a>
